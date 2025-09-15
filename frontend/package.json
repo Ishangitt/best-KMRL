@@ -1,0 +1,125 @@
+{
+  "name": "kmrl-train-scheduler-frontend",
+  "version": "1.0.0",
+  "description": "Frontend React application for KMRL Train Scheduler",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.5",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/lab": "^5.0.0-alpha.140",
+    "@mui/x-date-pickers": "^6.11.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.15.0",
+    "react-query": "^3.39.3",
+    "axios": "^1.5.0",
+    "formik": "^2.4.3",
+    "yup": "^1.2.0",
+    "date-fns": "^2.30.0",
+    "i18next": "^23.4.4",
+    "react-i18next": "^13.1.2",
+    "react-helmet-async": "^1.3.0",
+    "react-hot-toast": "^2.4.1",
+    "qrcode.js": "^0.0.2",
+    "socket.io-client": "^4.7.2",
+    "web-vitals": "^3.4.0",
+    "workbox-background-sync": "^7.0.0",
+    "workbox-broadcast-update": "^7.0.0",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-core": "^7.0.0",
+    "workbox-expiration": "^7.0.0",
+    "workbox-google-analytics": "^7.0.0",
+    "workbox-navigation-preload": "^7.0.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-range-requests": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
+    "workbox-streams": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.5.0",
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "typescript": "^5.1.6",
+    "react-scripts": "5.0.1",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.2",
+    "@testing-library/jest-dom": "^6.1.2",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "cypress": "^12.17.4",
+    "sass": "^1.66.1",
+    "webpack-bundle-analyzer": "^4.9.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "format": "prettier --write src/**/*.{ts,tsx,css,scss}",
+    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "serve": "serve -s build -l 3000"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "react-hooks",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/explicit-function-return-type": "off"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:3001",
+  "homepage": ".",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
