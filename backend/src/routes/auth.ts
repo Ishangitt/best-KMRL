@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { AuthController } from '../controllers/AuthController';
-import { validateRequest } from '../middleware/validation';
-import { authSchemas } from '../utils/validation/authSchemas';
+import { validate, registerValidation, loginValidation } from '../middleware/validation';
+import { authenticateToken } from '../middleware/auth';
 
 const router = Router();
 const authController = new AuthController();
@@ -85,7 +85,7 @@ const authController = new AuthController();
  *       409:
  *         description: User already exists
  */
-router.post('/register', validateRequest(authSchemas.register), authController.register);
+router.post('/register', validate(registerValidation), authController.register);
 
 /**
  * @swagger
@@ -109,7 +109,7 @@ router.post('/register', validateRequest(authSchemas.register), authController.r
  *       401:
  *         description: Invalid credentials
  */
-router.post('/login', validateRequest(authSchemas.login), authController.login);
+router.post('/login', validate(loginValidation), authController.login);
 
 /**
  * @swagger
@@ -123,7 +123,7 @@ router.post('/login', validateRequest(authSchemas.login), authController.login);
  *       200:
  *         description: Logout successful
  */
-router.post('/logout', authController.logout);
+router.post('/logout', authenticateToken, authController.logout);
 
 /**
  * @swagger

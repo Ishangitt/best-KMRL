@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
-import { config } from './config/database';
+import { initializeDatabase } from './config/database';
 import { errorHandler } from './middleware/errorHandler';
 import { logger } from './utils/logger';
 
@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).json({
     status: 'OK',
     timestamp: new Date().toISOString(),
@@ -68,10 +68,18 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, async () => {
   logger.info(`🚀 KMRL Train Scheduler API server running on port ${PORT}`);
   logger.info(`📖 API Documentation available at http://localhost:${PORT}/api/${API_VERSION}/docs`);
   logger.info(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  
+  // Initialize database connections
+  try {
+    await initializeDatabase();
+    logger.info('📊 Database connections initialized successfully');
+  } catch (error) {
+    logger.error('❌ Database initialization failed:', error);
+  }
 });
 
 // Graceful shutdown

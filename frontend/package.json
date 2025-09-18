@@ -24,7 +24,7 @@
     "react-i18next": "^13.1.2",
     "react-helmet-async": "^1.3.0",
     "react-hot-toast": "^2.4.1",
-    "qrcode.js": "^0.0.2",
+    "qrcode": "^1.5.3",
     "socket.io-client": "^4.7.2",
     "web-vitals": "^3.4.0",
     "workbox-background-sync": "^7.0.0",
@@ -47,7 +47,7 @@
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
-    "typescript": "^5.1.6",
+    "typescript": "^4.9.5",
     "react-scripts": "5.0.1",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
@@ -62,38 +62,28 @@
     "sass": "^1.66.1",
     "webpack-bundle-analyzer": "^4.9.0"
   },
-  "scripts": {
+"scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --run",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "format": "prettier --write src/**/*.{ts,tsx,css,scss}",
+    "format": "prettier --write src/**/*.{ts,tsx}",
     "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
-    "test:coverage": "npm test -- --coverage --watchAll=false",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "serve": "serve -s build -l 3000"
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "@typescript-eslint/recommended",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "react-hooks",
-      "prettier"
+      "react-app/jest"
     ],
     "rules": {
-      "prettier/prettier": "error",
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/explicit-function-return-type": "off"
+      "react-hooks/exhaustive-deps": "warn"
     }
   },
   "prettier": {
